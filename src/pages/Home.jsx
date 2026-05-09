@@ -28,7 +28,7 @@ export default function Home({ onSubmit }) {
   }
 
   return (
-    <div className="space-y-10 pb-40">
+    <div className="space-y-8 pb-8 animate-slide-up">
       {/* Hero Section */}
       <section className="space-y-6 text-center pt-8">
         <div className="flex justify-center">

@@ -4,21 +4,28 @@ const LOGO_URL = "https://blogger.googleusercontent.com/img/a/AVvXsEgNvFL9p6b5fy
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 px-6 py-4 flex items-center gap-4 glass border-none">
-      <div className="relative flex-shrink-0 w-12 h-12 flex items-center justify-center">
-        <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full animate-pulse" />
+    <header 
+      className="sticky top-0 z-50 flex items-center gap-4 overflow-hidden"
+      style={{ 
+        backgroundColor: 'white', 
+        padding: '12px 24px', 
+        borderBottom: '1px solid rgba(0,0,0,0.1)' 
+      }}
+    >
+      <div style={{ width: '48px', height: '48px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <img 
           src={LOGO_URL} 
           alt="GNPK RI Logo" 
-          className="relative w-full h-full object-contain"
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
         />
       </div>
       <div className="flex-1">
-        <h1 className="text-xl font-black tracking-tighter text-white leading-none">GNPK RI</h1>
-        <p className="text-[10px] uppercase tracking-[0.4em] text-primary font-black mt-1 opacity-80">BANJARNEGARA</p>
-      </div>
-      <div className="w-10 h-10 rounded-2xl border border-white/10 flex items-center justify-center bg-white/5 shadow-inner">
-        <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_15px_#10b981] animate-pulse" />
+        <h1 style={{ color: '#0f172a', fontWeight: 900, fontSize: '20px', letterSpacing: '-0.5px', margin: 0, lineHeight: 1 }}>
+          GNPK RI
+        </h1>
+        <p style={{ color: '#E31E24', fontWeight: 800, fontSize: '12px', letterSpacing: '0.5em', marginTop: '-4px', textTransform: 'uppercase' }}>
+          BANJARNEGARA
+        </p>
       </div>
     </header>
   )
