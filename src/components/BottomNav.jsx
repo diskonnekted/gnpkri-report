@@ -9,59 +9,28 @@ export default function BottomNav({ activeTab, setActiveTab }) {
   ]
 
   return (
-    <nav 
-      style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: '#0A0C10',
-        height: '85px',
-        display: 'flex',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        zIndex: 1000,
-        borderTop: '1px solid rgba(255,255,255,0.08)',
-        paddingBottom: 'env(safe-area-inset-bottom)'
-      }}
-    >
-      {tabs.map((tab) => {
-        const isActive = activeTab === tab.id
-        return (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: isActive ? '#E31E24' : '#94A3B8',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '4px',
-              width: '100%',
-              cursor: 'pointer',
-              position: 'relative'
-            }}
-          >
-            {isActive && (
-              <div style={{
-                position: 'absolute',
-                top: '-32px',
-                width: '40px',
-                height: '3px',
-                backgroundColor: '#E31E24',
-                borderRadius: '0 0 4px 4px',
-                boxShadow: '0 0 15px rgba(227, 30, 36, 0.5)'
-              }} />
-            )}
-            <tab.icon size={24} strokeWidth={isActive ? 3 : 2} />
-            <span style={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-              {tab.label}
-            </span>
-          </button>
-        )
-      })}
-    </nav>
+    <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-4">
+      <nav className="bg-bg-surface-elevated backdrop-blur-xl border border-border-highlight rounded-full p-1.5 flex items-center justify-between gap-2 shadow-glow pointer-events-auto">
+        {tabs.map((tab) => {
+          const isActive = activeTab === tab.id
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`relative flex items-center gap-2.5 px-5 py-3 rounded-full transition-all duration-300 ${
+                isActive ? 'bg-primary/20 text-white' : 'text-text-muted hover:text-white hover:bg-white/5'
+              }`}
+            >
+              <tab.icon size={20} strokeWidth={isActive ? 2.5 : 2} className={isActive ? 'text-primary' : ''} />
+              {isActive && (
+                <span className="text-xs font-bold tracking-wide">
+                  {tab.label}
+                </span>
+              )}
+            </button>
+          )
+        })}
+      </nav>
+    </div>
   )
 }

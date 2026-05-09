@@ -35,10 +35,10 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-deep overflow-x-hidden">
+    <div className="min-h-screen bg-bg-base text-text-main pb-24">
       <Header />
       
-      <main className="px-4 pt-4 pb-32 mx-auto max-w-lg">
+      <main className="px-4 pt-4 mx-auto max-w-lg">
         {isSuccess ? (
           <SuccessPage />
         ) : activeTab === 'home' ? (
@@ -46,7 +46,7 @@ function App() {
         ) : activeTab === 'progress' ? (
           <Progress reports={reports} />
         ) : isAdmin ? (
-          <Admin reports={reports} setReports={setReports} />
+          <Admin reports={reports} setReports={setReports} onLogout={() => handleLogin(false)} />
         ) : (
           <Login onLogin={handleLogin} />
         )}
