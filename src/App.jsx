@@ -6,10 +6,13 @@ import SuccessPage from './pages/SuccessPage'
 import Progress from './pages/Progress'
 import Login from './pages/Login'
 
+import Admin from './pages/Admin'
+
 function App() {
   const [activeTab, setActiveTab] = useState('home')
   const [reports, setReports] = useState([])
   const [isSuccess, setIsSuccess] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
     const savedReports = localStorage.getItem('gnpk_reports')
@@ -27,6 +30,10 @@ function App() {
     }, 3000)
   }
 
+  const handleLogin = (status) => {
+    setIsAdmin(status)
+  }
+
   return (
     <div className="min-h-screen bg-deep overflow-x-hidden">
       <Header />
@@ -38,10 +45,13 @@ function App() {
           <Home onSubmit={handleAddReport} />
         ) : activeTab === 'progress' ? (
           <Progress reports={reports} />
+        ) : isAdmin ? (
+          <Admin reports={reports} setReports={setReports} />
         ) : (
-          <Login />
+          <Login onLogin={handleLogin} />
         )}
       </main>
+
 
       {!isSuccess && <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />}
     </div>

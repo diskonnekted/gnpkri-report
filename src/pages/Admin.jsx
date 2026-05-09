@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Shield, Search, Printer, MessageCircle, CheckCircle, Clock, TrendingUp, Layers, Activity } from 'lucide-react'
+import { Shield, Search, Printer, MessageCircle, CheckCircle, Clock, TrendingUp, Layers, Activity, User } from 'lucide-react'
 
 export default function Admin({ reports, setReports }) {
   const [searchTerm, setSearchTerm] = useState('')
